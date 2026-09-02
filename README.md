@@ -12,25 +12,42 @@ This is the official repository for paper **"PetroSpear: Data- and kowledge-driv
 
 
 ## Preparation
-Create a virtual environment and install the required libraries.
+Create a virtual environment.
+```shell
+conda create --name torch_spear python=3.11.11
+conda activate torch_spear
+```
+
+Install torch-gpu, torchvision, and torchaudio, and then install the other dependencies.
 ```shell
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 ```
 
 ## Running the code
 
-### 1. PetroMind Instruction Fine-tuning
-Execute the PetroMind instruction fine-tuning script.
+### 1. PetroSpear two-stage training
+Run the PetroSpear two-stage training script using pre-trained VGG16, ResNet50, and ViT-Base-Patch16-224 backbones.
 ```shell
-01_train_two_stage.sh
+./06_cnn_train_multi_loss_rank.sh
 ```
 
-### 2. CNNs Training on the Rocks-13
-Execute the CNNs training script for the Rocks-13 dataset.
+### 2. Sensitivity analysis of early-stopping patience
+Run repeated comparative experiments using ResNet50 with different early stopping patience settings.
 ```shell
-02_rocks13_cnn.sh
+./06_cnn_train_multi_loss_rank_1_iter.sh
 ```
 
+### 3. Impact of loss function weights
+Run the sensitivity analysis script using varying Spear loss weight settings.
+```shell
+./06_cnn_train_multi_loss_rank_2_weight.sh
+```
+
+### 4. Analysis of semantic similarity matrix calculation methods
+Run the script of comparative experiments on different approaches for semantic similarity matrix computation.
+```shell
+./06_cnn_train_multi_loss_rank_3_clip.sh
+```
 
 ```bash
 @article{chen2026petrospear,

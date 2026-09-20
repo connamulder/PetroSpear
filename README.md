@@ -28,25 +28,26 @@ pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 ### 1. PetroSpear two-stage training
 Run the PetroSpear two-stage training script using pre-trained VGG16, ResNet50, and ViT-Base-Patch16-224 backbones.
 ```shell
-./06_cnn_train_multi_loss_rank.sh
+./01_cnn_train_multi_loss_rank.sh
 ```
 
 ### 2. Sensitivity analysis of early-stopping patience
 Run repeated comparative experiments using ResNet50 with different early stopping patience settings.
 ```shell
-./06_cnn_train_multi_loss_rank_1_iter.sh
+./02_cnn_train_multi_loss_rank_patient.sh
+./03_cnn_train_multi_loss_rank_iter.sh
 ```
 
 ### 3. Impact of loss function weights
 Run the sensitivity analysis script using varying Spear loss weight settings.
 ```shell
-./06_cnn_train_multi_loss_rank_2_weight.sh
+./04_cnn_train_multi_loss_rank_weight.sh
 ```
 
 ### 4. Analysis of semantic similarity matrix calculation methods
 Run the script of comparative experiments on different approaches for semantic similarity matrix computation.
 ```shell
-./06_cnn_train_multi_loss_rank_3_clip.sh
+./05_cnn_train_multi_loss_rank_emb.sh
 ```
 
 ```bash

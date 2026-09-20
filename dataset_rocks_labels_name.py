@@ -1,5 +1,5 @@
 """
-    @Project:
+    @Project: PetroSpear
     @File   : dataset_rocks_labels_name.py
     @Author : mulder
     @E-mail : c_mulder@163.com
@@ -32,7 +32,7 @@ def get_rock_labels_name(dataset_name):
 
     class_labels = []
     labels_name = {}
-    if dataset_name == 'plutonicrocks13_v3':
+    if 'plutonicrocks13_v3' in dataset_name:
         class_labels = class_labels_plutonic_v3
         labels_name = labels_name_plutonic_v3
 

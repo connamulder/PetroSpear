@@ -1,6 +1,6 @@
 """
     @Project: PetroSpear
-    @File   : 06_cnn_train_multi_loss.py
+    @File   : cnn_train_multi_loss.py
     @Author : mulder
     @E-mail : c_mulder@163.com
     @Date   : 2026-07-01

@@ -1,16 +1,38 @@
+"""
+    @Project: PetroSpear
+    @File   : utils/utils_draw_confusion_matrix.py
+    @Author : mulder
+    @E-mail : c_mulder@163.com
+    @Date   : 2026-09-08
+    @Info   : Implementation of following functions:
+                  accuracy
+                  draw_cm、draw_confusion_matrix
+                  draw_sim_matrix
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
 
 import torch
 from sklearn.metrics import confusion_matrix, classification_report
 
 
 def accuracy(output, target, topk=(1,)):
-    """Computes the precision@k for the specified values of k"""
+    """
+    Top-k accuracy calculation
+
+    参数:
+    output (np.ndarray): N x N 分类器Logits输出
+    target (np.ndarray): N x 1 Label
+    topk (tuple[int, ...]):
+
+    返回:
+    res (list[float]): top-k accuracy values
+    """
+
     with torch.no_grad():
         maxk = max(topk)
         batch_size = target.size(0)
@@ -31,14 +53,11 @@ def accuracy(output, target, topk=(1,)):
 
 
 def draw_sim_matrix(confusion_matrix_data, class_labels, filename, res_dir):
-    if not os.path.exists(res_dir):
-        os.makedirs(res_dir, exist_ok=True)
-
-    # 1. 设置绘图风格
+    # 设置绘图风格
     plt.figure(figsize=(10, 8))  # 设置画布大小，确保 13x13 的格子不会太拥挤
     sns.set_theme(style="white")  # 设置背景风格
 
-    # 2. 绘制热力图 (混淆矩阵)
+    # 绘制热力图 (混淆矩阵)
     ax = sns.heatmap(
         confusion_matrix_data,
         annot=True,  # 在单元格中显示数值
@@ -49,7 +68,7 @@ def draw_sim_matrix(confusion_matrix_data, class_labels, filename, res_dir):
         cbar_kws={'label': 'Similarity'}  # 颜色条的标签
     )
 
-    # 3. 美化图表
+    # 美化图表
     plt.title(filename, fontsize=9, pad=20)
     # plt.xlabel('Predicted Label', fontsize=9)
     # plt.ylabel('True Label', fontsize=9)
@@ -61,11 +80,11 @@ def draw_sim_matrix(confusion_matrix_data, class_labels, filename, res_dir):
     # 调整布局以防止标签被裁剪
     plt.tight_layout()
 
-    # 4. 显示图形
+    # 显示图形
     # plt.show()
     filename_png = "{}.{}".format(filename, "png")
     filename_svg = "{}.{}".format(filename, "svg")
-    # 5. 保存图形
+    # 保存图形
     # 如果需要保存为图片，可以取消下面这行的注释
     filepath = '%s/%s' % (res_dir, filename_png)
     plt.savefig(filepath, dpi=300, bbox_inches='tight')
@@ -74,7 +93,7 @@ def draw_sim_matrix(confusion_matrix_data, class_labels, filename, res_dir):
     plt.savefig(filepath, dpi=300, bbox_inches='tight')
 
 
-def draw_confusion_matrix(cm, label_class_num, res_dir):
+def draw_confusion_matrix(cm, label_class_num, res_dir, stage=1):
     normalize = True
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
@@ -117,8 +136,8 @@ def draw_confusion_matrix(cm, label_class_num, res_dir):
         inche_h = 16
     figure.set_size_inches(inche_w, inche_h)
 
-    plt.savefig('%s/confusion_matrix.png' % (res_dir), dpi=300)
-    plt.savefig('%s/confusion_matrix.svg' % (res_dir), dpi=300)
+    plt.savefig('%s/confusion_matrix_%d.png' % (res_dir, stage), dpi=300)
+    plt.savefig('%s/confusion_matrix_%d.svg' % (res_dir, stage), dpi=300)
     # plt.show()
 
 
@@ -134,6 +153,6 @@ def draw_cm(y_preds, y_trues, n_classes, res_dir, stage=1):
 
         # 计算混淆矩阵
         cm = confusion_matrix(y_trues.cpu().numpy(), y_preds.cpu().numpy())
-        draw_confusion_matrix(cm, n_classes, res_dir)
+        draw_confusion_matrix(cm, n_classes, res_dir, stage)
     else:
         print("label_counts < opt.n_classes")

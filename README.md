@@ -1,9 +1,11 @@
 # PetroSpear: Data- and kowledge-driven petrographic image classification with semantic prior embedding and ranking loss
 
 <div align="center">
-<strong>Author: Zhongliang Chen, Chaojie Zheng, Xiaohui Li, Feng Yuan</strong>
+<strong>Author: Zhongliang Chen<sup>a</sup>, Chaojie Zheng<sup>b, c</sup>, Xiaohui Li<sup>b, c</sup> and Feng Yuan<sup>b, c</sup></strong>
   
-<strong>Geological Survey of Anhui Province (Anhui Institute of Geological Sciences)</strong>
+<strong><sup>a</sup> Geological Survey of Anhui Province (Anhui Institute of Geological Science), Hefei 230001, China </strong><br>
+<strong><sup>b</sup> School of Resources and Environment Engineering, Hefei University of Technology, Hefei 230009, China </strong><br>
+<strong><sup>c</sup> Anhui Provincial Key Laboratory for Deep Exploration, Evaluation and Utilization of Strategic Mineral Resources, Hefei 230009, China.</strong><br>
 </div>
 
 This is the official repository for paper **"PetroSpear: Data- and kowledge-driven petrographic image classification with semantic prior embedding and ranking loss"**. [[paper](https://)]

@@ -1,3 +1,12 @@
+"""
+    @Project: PetroSpear
+    @File   : similarity_matrix_clip.py
+    @Author : mulder
+    @E-mail : c_mulder@163.com
+    @Date   : 2026-09-03
+    @Info   : To get rock type word embedding vectors of the CLIP model.
+"""
+
 import torch
 from transformers import CLIPProcessor, CLIPModel
 import torch.nn.functional as F

@@ -1,3 +1,12 @@
+"""
+    @Project: PetroSpear
+    @File   : utils/utils_result.py
+    @Author : mulder
+    @E-mail : c_mulder@163.com
+    @Date   : 2026-09-08
+    @Info   : 常用工具类及函数
+"""
+
 import os
 import re
 import pandas as pd

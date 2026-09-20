@@ -1,6 +1,6 @@
 """
-    @Project:
-    @File   : models_rock.py
+    @Project: PetroSpear
+    @File   : models/models_rock.py
     @Author : mulder
     @E-mail : c_mulder@163.com
     @Date   : 2026-07-01

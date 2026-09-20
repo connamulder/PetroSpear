@@ -190,45 +190,14 @@ class CustomCrossEntropyLoss(nn.Module):
 
 
 def test_custom_celoss():
+
     torch.manual_seed(42)
 
     # batch_size=8, Classes=13
     inputs = torch.randn(8, 13, requires_grad=True)
     targets = torch.tensor([1, 0, 4, 2, 3, 5, 9, 12])
 
-    def compare(name, official_fn, custom_fn, inps, tgts):
-        loss_official = official_fn(inps, tgts)
-        loss_custom = custom_fn(inps, tgts)
-        match = torch.allclose(loss_official, loss_custom, atol=1e-5)
-        print(f"[{name}] Official: {loss_official.item():.6f} | Custom: {loss_custom.item():.6f} | Match: {match}")
-
-    # 测试 1: 基础 Label Smoothing
-    print("--- 测试 1: 基础 Label Smoothing (α=0.0) ---")
-    compare("Smoothing 0.0",
-            nn.CrossEntropyLoss(),
-            CustomCrossEntropyLoss(label_smoothing=0.0),
-            inputs, targets)
-
-    # 测试 2: 基础 Label Smoothing
-    print("--- 测试 2: 基础 Label Smoothing (α=0.1) ---")
-    compare("Smoothing 0.1",
-            nn.CrossEntropyLoss(label_smoothing=0.1),
-            CustomCrossEntropyLoss(label_smoothing=0.1),
-            inputs, targets)
-
-    """
-    # 测试 3: 多维输入 (N, C, H, W)
-    print("--- 测试 3: 多维输入 (N, C, H, W) = (2, 5, 4, 4) ---")
-    batch_size, channels, height, width = 2, 5, 4, 4
-    logits_2d = torch.randn(batch_size, channels, height, width)
-    targets_2d = torch.randint(0, channels, (batch_size, height, width))
-    compare("Smoothing 0.0",
-            nn.CrossEntropyLoss(label_smoothing=0.0),
-            CustomCrossEntropyLoss(label_smoothing=0.0),
-            logits_2d, targets_2d)
-    """
-
-    # 测试 4: sim_matrix输入
+    # 测试: sim_matrix输入
     print("--- 测试 4: sim_matrix输入 Label Smoothing (α=0.0) ---")
     from similarity_matrix_neo4j import build_similarity_matrix_by_neo4j
 

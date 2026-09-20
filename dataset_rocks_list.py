@@ -1,5 +1,5 @@
 """
-    @Project: GAN_GNN
+    @Project: PetroSpear
     @File   : dataset_rocks_list.py
     @Author : mulder
     @E-mail : c_mulder@163.com

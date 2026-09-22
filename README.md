@@ -1,4 +1,4 @@
-# PetroSpear: Data- and kowledge-driven petrographic image classification with semantic prior embedding and ranking loss
+# PetroSpear: Data- and knowledge-driven petrographic image classification with semantic prior embedding and ranking loss
 
 <div align="center">
 <strong>Author: Zhongliang Chen<sup>a</sup>, Chaojie Zheng<sup>b, c</sup>, Xiaohui Li<sup>b, c</sup> and Feng Yuan<sup>b, c</sup></strong>
@@ -8,7 +8,7 @@
 <strong><sup>c</sup> Anhui Provincial Key Laboratory for Deep Exploration, Evaluation and Utilization of Strategic Mineral Resources, Hefei 230009, China.</strong><br>
 </div>
 
-This is the official repository for paper **"PetroSpear: Data- and kowledge-driven petrographic image classification with semantic prior embedding and ranking loss"**. [[paper](https://)]
+This is the official repository for paper **"PetroSpear: Data- and knowledge-driven petrographic image classification with semantic prior embedding and ranking loss"**. [[paper](https://)]
 
 ## Please share a <font color='orange'>STAR ⭐</font> if this project does help
 
@@ -54,7 +54,7 @@ Run the script of comparative experiments on different approaches for semantic s
 
 ```bash
 @article{chen2026petrospear,
-  title={PetroSpear: Data- and kowledge-driven petrographic image classification with semantic prior embedding and ranking loss},
+  title={PetroSpear: Data- and knowledge-driven petrographic image classification with semantic prior embedding and ranking loss},
   author={Chen Zhongliang,Zheng Chaojie, Li Xiaohui, Yuan Feng},
   journal={},
   year={},
